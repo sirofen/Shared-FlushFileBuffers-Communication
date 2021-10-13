@@ -158,9 +158,10 @@ namespace RegistryUtils
 			}
 
 			ZwClose(hKey);
-			free(pKeyInfo);
-
-			return *(type*)((LONG64)pKeyInfo + pKeyInfo->DataOffset);
+			
+			type _v = *(type*) (pKeyInfo + pKeyInfo->DataOffset);
+            		free(pKeyInfo);
+			return _v;
 		}
 
 		return 0;
